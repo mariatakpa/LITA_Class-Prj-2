@@ -107,4 +107,13 @@ THEN 1 ELSE 0 END ) AS Canceled_Subscription from [dbo].[customer data]
 
 ![Pivot Chart Prj 2](https://github.com/user-attachments/assets/93509984-9d61-4681-b7c0-a369bb8facf1)
 
+---
+### Recommendations
+- Improve Customer Satisfaction.
+- Regular Monitoring and Updates.
+- Customer Retention Programs.
+- Revenue Optimization.
 
+---
+### Conclusion 
+The Customer Segmentation Analysis project provided valuable insights into customer behavior and subscription patterns. The Power BI dashboard enables interactive visualization of key metrics.
