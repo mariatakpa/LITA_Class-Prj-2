@@ -102,3 +102,8 @@ THEN 1 ELSE 0 END ) AS Canceled_Subscription from [dbo].[customer data]
 ### Data Visualization
 
 ![Customer Segmentation Analysis](https://github.com/user-attachments/assets/be74e2a2-57fc-4326-817c-fc31def8bcbc)
+
+![Pivot Chart II](https://github.com/user-attachments/assets/f6c2c1a4-2801-4084-812a-4d0af7b90834)
+
+
+
