@@ -3,7 +3,9 @@
 ## Project Overview
 
 This project aims to analyze customer data for a subscription service to identify key customer segments, subscription patterns , and trends in cancellations and renewals.
+
 The goal is to identify distinct customer groups based on behaviors, demographics,and preferences to tailor marketing strategies, personalize user experiences, and increase customer lifetime value. This segmentation will help the company focus resources efficiently, improve customer satisfaction, and ultimately enhance revenue.
+
 The final deliverable is an interactive Power BI dashboard that visualizes the insights gained from the analysis.
 
 ---
@@ -32,11 +34,24 @@ The following software tools are required:
 - Power BI : For building the interactive dashboard.
 
 ---
-### How to Use This Repository
-1. Data Setup: Load the dataset into SQL Server and/or Excel
-2. Excel Analysis: Open excel_reports/customer_segmentation.xlsx to explore the data.
-3. SQL Queries: Run the queries in sql_queries/customer_analysis.sql on your SQL server.
-4. Power BI Visualization: Open power_bi/segmentation_dashboard.pbix in Power BI to view and interact with the dashboard.
+### Data Collection and Preparation
+Data Collection:
+
+* Internal Data: Collect customer data from internal sources like CRM systems, purchase history, and web analytics. Key attributes might include demographics(age, gender,
+income level), behavioral data( purchase frequency , types of products purchased) and engagement metrics.
+
+ - Data Cleaning: Handle missing values by either imputing them with mean/ median values or using other statistical methods, depending on the nature of the data.
+
+-  Data Transformation: Create new features based on existing data , such as customer lifetime value(CLV), Average transaction amount or recency-frequency-monetary(RFM) scores.
+
+  ---
+  ### Exploratory Data Analysis
+  EDA involves the exploration of data to answer some questions about the data such as;
+  - What are the primary demographic characteristics of the customer base( e.g age distribution, gender balance, income segments)?
+  - How do customer demographics correlate with purchasing behavior or engagement levels?
+  - What is the average order value , and does it vary by customer segments?
+  - How much do customers spend on average, and are there any significant differences among segments?
+
 
 ---
 ### Insights
@@ -45,3 +60,43 @@ The analysis provide insights into:
 - Subscription Trends: Identifying popular subscription types and average subscription duration
 - Cancellations and Renewals: Analyzing patterns in cancellations and long-term subscribers.
 - Revenue Distribution: Observing revenue trends by subscription type and region.
+
+
+---
+### Data Analysis
+This is where I included lines of queries during analysis;
+
+```sql
+create database LITA_DB
+
+select * from [dbo].[customer data]
+
+select Region , Count (CustomerID) AS TotalCustomer from [dbo].[customer data]
+GROUP BY Region
+
+select SubscriptionType , Count( CustomerID) AS TotalCustomer from [dbo].[customer data]
+GROUP BY SubscriptionType
+ORDER BY TotalCustomer DESC
+
+Select customer_id from SubscriptionStart where status= Canceled from [dbo].[customer data]
+WHERE CustomerID <= 180
+
+select AVG  (CustomerID )AS avgduration
+from [dbo].[customer data]
+
+select subscriptiontype
+SUM (Revenue) AS TotalRevenue from [dbo].[customer data]
+GROUP BY SubscriptionType
+
+select Region , count (canceled) as Total_cancellation from[dbo].[customer data]
+where Canceled is not null
+group by Region
+
+select SUM ( CASE WHEN  SubscriptionType = 'Active'
+THEN 1 ELSE 0 END ) AS Active_Subscription,
+SUM( CASE WHEN SubscriptionType= 'Canceled '
+THEN 1 ELSE 0 END ) AS Canceled_Subscription from [dbo].[customer data]
+```
+
+---
+### Data Visualization
