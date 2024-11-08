@@ -105,5 +105,6 @@ THEN 1 ELSE 0 END ) AS Canceled_Subscription from [dbo].[customer data]
 
 ![Pivot Chart II](https://github.com/user-attachments/assets/f6c2c1a4-2801-4084-812a-4d0af7b90834)
 
+![Pivot Chart Prj 2](https://github.com/user-attachments/assets/93509984-9d61-4681-b7c0-a369bb8facf1)
 
 
